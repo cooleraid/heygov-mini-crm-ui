@@ -4,7 +4,7 @@
 HeyGov Mini CRM provides an easy way to quickly add contacts & easily manage or find existing ones.
 
 ## Assumptions
-1. It's assumed that user's won't be authenticated to access the CRM.
+1. It's assumed that users won't be authenticated to access the CRM.
 2. It's assumed that a unique client ID is generated and stored in the localstorage to identify different users per device.
 3. It's assumed that pagination isn't necessary because it's a demo CRM and the time constraint for the project completion. 
 

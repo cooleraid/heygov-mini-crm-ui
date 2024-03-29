@@ -18,7 +18,7 @@
         class="h-16 py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
         placeholder="Address" />
     </div>
-    <button @click="newContact"
+    <button @click="newContact" :disabled="!formData.name && !formData.email"
       class="p-4 border rounded-lg flex-shrink-0 h-16 w-16 flex items-center justify-center dark:text-white">
       <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -61,6 +61,7 @@ export default {
             address: ''
           };
           loader.hide()
+          this.$emit('newContact', '');
           this.$toast.success(res?.data?.message || 'Contact created successfully');
         })
         .catch((err) => {

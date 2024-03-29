@@ -53,14 +53,17 @@
       <p>Address</p>
     </div>
     <!-- Contacts -->
-    <div v-for="(contact, index) in contacts" :key="index" class="grid grid-cols-6 gap-2 p-4 items-center">
-      <p class="break-words">{{ contact.name || '-' }}</p>
-      <p class="break-words">{{ contact.email || '-' }}</p>
-      <p class="break-words">{{ contact.company || '-' }}</p>
-      <p class="break-words">{{ contact.phone || '-' }}</p>
-      <p class="break-words">{{ contact.address || '-' }}</p>
-      <button @click="removeContact(contact.id)" class="p-3 bg-red-800 text-white rounded-lg">Delete</button>
+    <div v-if="contacts.length > 0">
+      <div v-for="(contact, index) in contacts" :key="index" class="grid grid-cols-6 gap-2 p-4 items-center">
+        <p class="break-words">{{ contact.name || '-' }}</p>
+        <p class="break-words">{{ contact.email || '-' }}</p>
+        <p class="break-words">{{ contact.company || '-' }}</p>
+        <p class="break-words">{{ contact.phone || '-' }}</p>
+        <p class="break-words">{{ contact.address || '-' }}</p>
+        <button @click="removeContact(contact.id)" class="p-3 bg-red-800 text-white rounded-lg">Delete</button>
+      </div>
     </div>
+    <div v-else>No records found</div>
   </div>
 </template>
 
@@ -69,6 +72,9 @@ import { fetchContacts, deleteContact } from '@/actions/contact';
 
 
 export default {
+  props: {
+    newContactEvent: String
+  },
   data() {
     return {
       contacts: [],
@@ -80,6 +86,11 @@ export default {
   },
   mounted() {
     this.getContacts()
+  },
+  watch: {
+    newContactEvent() {
+      this.getContacts();
+    }
   },
   methods: {
     getContacts(query = {}) {

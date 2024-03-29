@@ -39,6 +39,7 @@ export default {
         .then((res) => {
           this.formData.prompt = '';
           loader.hide()
+          this.$emit('newContact', '');
           this.$toast.success(res?.data?.message || 'Contact created successfully');
         })
         .catch((err) => {

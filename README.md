@@ -3,6 +3,11 @@
 
 HeyGov Mini CRM provides an easy way to quickly add contacts & easily manage or find existing ones.
 
+## Assumptions
+1. It's assumed that user's won't be authenticated to access the CRM.
+2. It's assumed that a unique client ID is generated and stored in the localstorage to identify different users per device.
+3. It's assumed that pagination isn't necessary because it's a demo CRM and the time constraint for the project completion. 
+
 ## Requirements
 1. Mac OS (feel free to use any OS).
 2. [Git](https://git-scm.com/).
@@ -25,6 +30,3 @@ npm run dev
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-[MIT](https://test.com)
